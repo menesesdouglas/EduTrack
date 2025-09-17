@@ -1,156 +1,119 @@
-# 📚 EduTrack
+📚 EduTrack
+Sistema de gestão escolar em linha de comando (CLI) desenvolvido em Python com SQLite para persistência de dados. O objetivo é permitir que um administrador gerencie alunos, matérias e notas de forma simples e eficiente, utilizando operações CRUD (Create, Read, Update, Delete).
 
-EduTrack é um sistema de gestão escolar em linha de comando (CLI) desenvolvido em **Python** com **SQLite** para persistência de dados. O objetivo é permitir que um administrador gerencie alunos, matérias e notas de forma simples e eficiente, utilizando operações **CRUD** (Create, Read, Update, Delete).
+📖 Visão Geral
+EduTrack foi criado para fins educacionais e demonstra como usar Python e SQLite para construir um sistema CRUD funcional. Ele pode ser expandido e adaptado para atender a necessidades maiores, como integração com interfaces gráficas ou sistemas web.
 
----
+🛠️ Tecnologias Utilizadas
+Linguagem: Python 3
 
-## 📖 Visão Geral
+Banco de Dados: SQLite3
 
-Este software foi criado para fins educacionais e demonstra como utilizar Python e SQLite para construir um sistema CRUD funcional. Ele pode ser expandido e adaptado para atender a necessidades maiores, como integração com interfaces gráficas ou sistemas web.
+Paradigma: Programação Procedural
 
----
+Execução: Aplicação CLI (linha de comando)
 
-## 🛠️ Tecnologias Utilizadas
+🧩 Estrutura do Banco de Dados (Modelo Entidade-Relacionamento)
+Tabela Alunos
+Campo	Tipo	Detalhes
+id_aluno	INTEGER	PRIMARY KEY AUTOINCREMENT
+nome_aluno	TEXT	NOT NULL
+matricula	TEXT	UNIQUE NOT NULL
+data_nascimento	TEXT	
+telefone_responsavel	TEXT	
+nome_responsavel	TEXT	
+serie	TEXT	
 
-* **Linguagem:** Python 3
-* **Banco de Dados:** SQLite3
-* **Paradigma:** Programação Procedural
-* **Execução:** Aplicação CLI (linha de comando)
+Exportar para as Planilhas
+Tabela Materias
+Campo	Tipo	Detalhes
+id_materia	INTEGER	PRIMARY KEY AUTOINCREMENT
+nome_materia	TEXT	NOT NULL
+codigo_materia	TEXT	UNIQUE NOT NULL
 
----
+Exportar para as Planilhas
+Tabela Notas
+Campo	Tipo	Detalhes
+id_nota	INTEGER	PRIMARY KEY AUTOINCREMENT
+id_aluno	INTEGER	FOREIGN KEY (Alunos)
+id_materia	INTEGER	FOREIGN KEY (Materias)
+trimestre	INTEGER	NOT NULL, CHECK(trimestre IN (1,2,3))
+nota	REAL	
+nota_final	REAL	
+status_final	TEXT	
 
-## 🧩 Estrutura do Banco de Dados (Modelo Entidade-Relacionamento)
+Exportar para as Planilhas
+⚙️ Funcionalidades
+📌 Gerenciar Alunos
+Criar: Cadastrar um novo aluno.
 
-### **Tabela Alunos**
+Ler: Listar todos os alunos, listar por série ou visualizar detalhes completos.
 
-* `id_aluno` (INTEGER PRIMARY KEY AUTOINCREMENT)
-* `nome_aluno` (TEXT NOT NULL)
-* `matricula` (TEXT UNIQUE NOT NULL)
-* `data_nascimento` (TEXT)
-* `telefone_responsavel` (TEXT)
-* `nome_responsavel` (TEXT)
-* `serie` (TEXT)
+Atualizar: Editar dados do aluno.
 
-### **Tabela Materias**
+Deletar: Remover um aluno e todas as suas notas associadas.
 
-* `id_materia` (INTEGER PRIMARY KEY AUTOINCREMENT)
-* `nome_materia` (TEXT NOT NULL)
-* `codigo_materia` (TEXT UNIQUE NOT NULL)
+📌 Gerenciar Matérias
+Criar: Adicionar uma nova matéria.
 
-### **Tabela Notas**
+Ler: Listar todas as matérias existentes.
 
-* `id_nota` (INTEGER PRIMARY KEY AUTOINCREMENT)
-* `id_aluno` (INTEGER, FOREIGN KEY -> Alunos)
-* `id_materia` (INTEGER, FOREIGN KEY -> Materias)
-* `trimestre` (INTEGER NOT NULL, CHECK(trimestre IN (1,2,3)))
-* `nota` (REAL)
-* `nota_final` (REAL)
-* `status_final` (TEXT)
+Atualizar: Editar nome ou código da matéria.
 
----
+Deletar: Remover uma matéria e suas notas associadas.
 
-## ⚙️ Funcionalidades
+📌 Gerenciar Notas
+Criar/Atualizar: Adicionar ou modificar notas de um aluno.
 
-### 📌 **Gerenciar Alunos**
+Ler: Gerar relatório detalhado e calcular nota e status final.
 
-* Criar: Cadastrar um novo aluno com todos os dados necessários.
-* Ler:
+Deletar: Remover notas.
 
-  * Listar todos os alunos (nome e matrícula).
-  * Listar alunos por série.
-  * Visualizar detalhes completos de um aluno.
-* Atualizar: Editar dados de um aluno (nome, série, etc.).
-* Deletar: Remover um aluno e todas as suas notas associadas.
+📊 Regras de Negócio
+Cálculo da Nota Final:
 
-### 📌 **Gerenciar Matérias**
+(Nota_1ºT + Nota_2ºT + Nota_3ºT) / 3
+Critérios de Aprovação/Reprovação (valores padrão configuráveis):
 
-* Criar: Adicionar uma nova matéria (nome e código).
-* Ler: Listar todas as matérias existentes.
-* Atualizar: Editar o nome ou código de uma matéria.
-* Deletar: Remover uma matéria e todas as notas associadas.
+Aprovado: Nota_final ≥ nota_minima_aprovacao
 
-### 📌 **Gerenciar Notas**
+Recuperação: nota_maxima_reprovacao < Nota_final < nota_minima_aprovacao
 
-* Criar/Atualizar: Adicionar ou modificar notas de um aluno em determinado trimestre e matéria.
-* Ler:
+Reprovado: Nota_final ≤ nota_maxima_reprovacao
 
-  * Gerar relatório detalhado de um aluno (notas por trimestre e matéria).
-  * Calcular nota final e status (Aprovado, Reprovado ou Recuperação).
-* Deletar: Remover notas (inclui remoção automática ao deletar aluno ou matéria).
+🚧 Status do Projeto
+⚠️ EduTrack está em desenvolvimento ativo. As funcionalidades listadas estão sendo implementadas e aprimoradas continuamente.
 
----
+🆕 Atualizações da Versão 0.1
+Criação das tabelas Alunos, Materias e Notas.
 
-## 📊 Regras de Negócio
+CRUD de alunos implementado:
 
-* **Cálculo da Nota Final**:
+Criar, Ler, Atualizar, e Deletar.
 
-  ```
-  Nota_final = (Nota_1ºT + Nota_2ºT + Nota_3ºT) / 3
-  ```
-* **Critérios de Aprovação/Reprovação** *(valores padrão)*:
+Funções iniciais para Matérias:
 
-  * Aprovado: `Nota_final ≥ nota_minima_aprovacao`
-  * Recuperação: `nota_maxima_reprovacao < Nota_final < nota_minima_aprovacao`
-  * Reprovado: `Nota_final ≤ nota_maxima_reprovacao`
+Criar e Ler (em construção).
 
-Esses limites podem ser ajustados no início do programa.
+▶️ Como Usar
+Clone o repositório.
 
----
+Garanta que o Python 3 esteja instalado.
 
-## 🚧 Status do Projeto
+Execute o arquivo principal:
 
-⚠️ **EduTrack está em desenvolvimento ativo.**
-Atualmente, apenas parte das funcionalidades está implementada. Recursos futuros incluem gerenciamento completo de notas, cálculo automático de status final e interface de menu mais interativa.
+python crud_escola.py
+🧠 Próximos Passos
+Finalizar as funções de gerenciamento de matérias (Update e Delete).
 
----
+Implementar o gerenciamento completo de notas.
 
-## 🆕 Updates
+Adicionar interface de menu CLI para navegação simples.
 
-### ✅ **Versão 0.1 (Primeira Versão)**
+Documentar exemplos de uso.
 
-* Criação do banco de dados e das tabelas **Alunos**, **Materias** e **Notas**.
-* Funções CRUD implementadas para **Alunos**:
+✨ Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para enviar Pull Requests ou abrir Issues para sugestões, correções ou melhorias.
 
-  * Criar (adicionar aluno)
-  * Ler (listar alunos)
-  * Atualizar (editar dados de aluno)
-  * Deletar (remover aluno)
-* Funções iniciais para **Matérias**:
-
-  * Criar (adicionar matéria)
-  * Ler (listar matérias) *(em construção)*
-
----
-
-## ▶️ Como Usar
-
-1. Clone o repositório para sua máquina local.
-2. Certifique-se de ter o **Python 3** instalado.
-3. Execute o arquivo principal para criar o banco e testar as funções iniciais:
-
-   ```
-   python crud_escola.py
-   ```
-4. Use as funções disponíveis para cadastrar, listar, atualizar e remover alunos ou matérias.
-
----
-
-## 🧠 Próximos Passos
-
-* Finalizar as funções de gerenciamento de matérias (update e delete).
-* Implementar totalmente o gerenciamento de notas.
-* Adicionar cálculo de nota final e status automático.
-* Criar interface de menu CLI para navegação simples.
-* Documentar mais exemplos de uso.
-
----
-
-## ✨ Contribuições
-
-Contribuições são bem-vindas! Sugestões, correções e melhorias podem ser feitas via **Pull Requests** ou **Issues** no repositório.
-
----
-
-## 📜 Licença
-
+📜 Licença
 Este projeto é distribuído sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
