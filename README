@@ -1,4 +1,3 @@
-Você disse:
 📚 EduTrack
 Sistema de gestão escolar em linha de comando (CLI) desenvolvido em Python com SQLite para persistência de dados. O objetivo é permitir que um administrador gerencie alunos, matérias e notas de forma simples e eficiente, utilizando operações CRUD (Create, Read, Update, Delete).
 
