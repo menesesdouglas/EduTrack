@@ -106,14 +106,14 @@ Garanta que o Python 3 esteja instalado.
 Execute o arquivo principal:
 
 python crud_escola.py
+
 🧠 Próximos Passos
-Finalizar as funções de gerenciamento de matérias (Update e Delete).
 
-Implementar o gerenciamento completo de notas.
+Atualizar as funções de relatórios para gerar arquivos .docx e .pdf, salvando-os localmente.
 
-Adicionar interface de menu CLI para navegação simples.
+Adicionar funções de login e criar um banco de dados de autenticação para professores, diretoria (admin) e alunos, definindo permissões e restrições específicas para cada nível de acesso.
 
-Documentar exemplos de uso.
+Evoluir o sistema para a versão final v1.0, que contará com interface gráfica disponível tanto em aplicação desktop quanto em versão web.
 
 ✨ Contribuições
 Contribuições são bem-vindas! Sinta-se à vontade para enviar Pull Requests ou abrir Issues para sugestões, correções ou melhorias.
