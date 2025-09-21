@@ -1,0 +1,119 @@
+📚 EduTrack
+Sistema de gestão escolar em linha de comando (CLI) desenvolvido em Python com SQLite para persistência de dados. O objetivo é permitir que um administrador gerencie alunos, matérias e notas de forma simples e eficiente, utilizando operações CRUD (Create, Read, Update, Delete).
+
+📖 Visão Geral
+EduTrack foi criado para fins educacionais e demonstra como usar Python e SQLite para construir um sistema CRUD funcional. Ele pode ser expandido e adaptado para atender a necessidades maiores, como integração com interfaces gráficas ou sistemas web.
+
+🛠️ Tecnologias Utilizadas
+Linguagem: Python 3
+
+Banco de Dados: SQLite3
+
+Paradigma: Programação Procedural
+
+Execução: Aplicação CLI (linha de comando)
+
+🧩 Estrutura do Banco de Dados (Modelo Entidade-Relacionamento)
+Tabela Alunos
+Campo	Tipo	Detalhes
+id_aluno	INTEGER	PRIMARY KEY AUTOINCREMENT
+nome_aluno	TEXT	NOT NULL
+matricula	TEXT	UNIQUE NOT NULL
+data_nascimento	TEXT	
+telefone_responsavel	TEXT	
+nome_responsavel	TEXT	
+serie	TEXT	
+
+Exportar para as Planilhas
+Tabela Materias
+Campo	Tipo	Detalhes
+id_materia	INTEGER	PRIMARY KEY AUTOINCREMENT
+nome_materia	TEXT	NOT NULL
+codigo_materia	TEXT	UNIQUE NOT NULL
+
+Exportar para as Planilhas
+Tabela Notas
+Campo	Tipo	Detalhes
+id_nota	INTEGER	PRIMARY KEY AUTOINCREMENT
+id_aluno	INTEGER	FOREIGN KEY (Alunos)
+id_materia	INTEGER	FOREIGN KEY (Materias)
+trimestre	INTEGER	NOT NULL, CHECK(trimestre IN (1,2,3))
+nota	REAL	
+nota_final	REAL	
+status_final	TEXT	
+
+Exportar para as Planilhas
+⚙️ Funcionalidades
+📌 Gerenciar Alunos
+Criar: Cadastrar um novo aluno.
+
+Ler: Listar todos os alunos, listar por série ou visualizar detalhes completos.
+
+Atualizar: Editar dados do aluno.
+
+Deletar: Remover um aluno e todas as suas notas associadas.
+
+📌 Gerenciar Matérias
+Criar: Adicionar uma nova matéria.
+
+Ler: Listar todas as matérias existentes.
+
+Atualizar: Editar nome ou código da matéria.
+
+Deletar: Remover uma matéria e suas notas associadas.
+
+📌 Gerenciar Notas
+Criar/Atualizar: Adicionar ou modificar notas de um aluno.
+
+Ler: Gerar relatório detalhado e calcular nota e status final.
+
+Deletar: Remover notas.
+
+📊 Regras de Negócio
+Cálculo da Nota Final:
+
+(Nota_1ºT + Nota_2ºT + Nota_3ºT) / 3
+Critérios de Aprovação/Reprovação (valores padrão configuráveis):
+
+Aprovado: Nota_final ≥ nota_minima_aprovacao
+
+Recuperação: nota_maxima_reprovacao < Nota_final < nota_minima_aprovacao
+
+Reprovado: Nota_final ≤ nota_maxima_reprovacao
+
+🚧 Status do Projeto
+⚠️ EduTrack está em desenvolvimento ativo. As funcionalidades listadas estão sendo implementadas e aprimoradas continuamente.
+
+🆕 Atualizações da Versão 0.1
+Criação das tabelas Alunos, Materias e Notas.
+
+CRUD de alunos implementado:
+
+Criar, Ler, Atualizar, e Deletar.
+
+Funções iniciais para Matérias:
+
+Criar e Ler (em construção).
+
+▶️ Como Usar
+Clone o repositório.
+
+Garanta que o Python 3 esteja instalado.
+
+Execute o arquivo principal:
+
+python crud_escola.py
+🧠 Próximos Passos
+Finalizar as funções de gerenciamento de matérias (Update e Delete).
+
+Implementar o gerenciamento completo de notas.
+
+Adicionar interface de menu CLI para navegação simples.
+
+Documentar exemplos de uso.
+
+✨ Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para enviar Pull Requests ou abrir Issues para sugestões, correções ou melhorias.
+
+📜 Licença
+Este projeto é distribuído sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
