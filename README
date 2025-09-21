@@ -84,16 +84,19 @@ Reprovado: Nota_final ≤ nota_maxima_reprovacao
 🚧 Status do Projeto
 ⚠️ EduTrack está em desenvolvimento ativo. As funcionalidades listadas estão sendo implementadas e aprimoradas continuamente.
 
-🆕 Atualizações da Versão 0.1
-Criação das tabelas Alunos, Materias e Notas.
+🆕 **Atualizações da Versão 0.2**
 
-CRUD de alunos implementado:
+* **Funções para Matérias e Notas:**
+  • Concluídas e ampliadas as operações relacionadas a matérias.
+  • Adicionadas funções para gerenciamento de notas (criação e manipulação de registros).
 
-Criar, Ler, Atualizar, e Deletar.
+* **Menu Interativo CLI:**
+  • Desenvolvido um menu em linha de comando para facilitar a navegação e o acesso às funcionalidades do sistema.
+  • Permite interação direta para cadastro, listagem, atualização e exclusão de registros.
 
-Funções iniciais para Matérias:
-
-Criar e Ler (em construção).
+* **Testes e Depuração:**
+  • Testado em diferentes cenários para validar o correto funcionamento das novas funções.
+  • Depuração realizada para corrigir erros e garantir maior estabilidade.
 
 ▶️ Como Usar
 Clone o repositório.
